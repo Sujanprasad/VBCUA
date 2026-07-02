@@ -1,0 +1,109 @@
+/* Custom CSS for VBCUA Dashboard */
+
+.stApp {
+    background-color: #0B0F19; /* Custom very dark blue/slate */
+}
+
+/* Card layout */
+.metric-card {
+    background: rgba(30, 41, 59, 0.7); /* Slate 800 with transparency */
+    border: 1px solid #334155; /* Slate 700 */
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.metric-header {
+    font-size: 14px;
+    font-weight: 600;
+    color: #94A3B8; /* Slate 400 */
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.metric-value {
+    font-size: 32px;
+    font-weight: 800;
+    color: #F8FAFC;
+    margin-bottom: 5px;
+}
+
+.metric-desc {
+    font-size: 12px;
+    color: #64748B; /* Slate 500 */
+}
+
+/* Custom Alert Boxes */
+.custom-feedback-card {
+    background-color: #1E293B;
+    border-left: 5px solid #0F766E; /* Teal border */
+    border-radius: 0 8px 8px 0;
+    padding: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.feedback-section-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0D9488;
+    margin-bottom: 8px;
+}
+
+/* Category Badges */
+.badge {
+    display: inline-block;
+    padding: 0.25em 0.6em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.375rem;
+}
+
+.badge-strong {
+    color: #10B981;
+    background-color: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.badge-moderate {
+    color: #F59E0B;
+    background-color: rgba(245, 158, 11, 0.15);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.badge-poor {
+    color: #EF4444;
+    background-color: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* Custom content boxes */
+.content-box {
+    background-color: #111827;
+    border: 1px solid #1F2937;
+    border-radius: 8px;
+    padding: 15px;
+    min-height: 120px;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #D1D5DB;
+}
+
+.content-box-header {
+    font-size: 12px;
+    font-weight: 600;
+    color: #9CA3AF;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid #1F2937;
+    padding-bottom: 4px;
+}
