@@ -13,7 +13,7 @@ from sqlalchemy.orm import joinedload
 # Ensure modules and database directories are in path, whether running from root or frontend folder
 current_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(current_dir)
-# Support running from within '5. Project Development Phase/frontend'
+# Support running from within '5.Project_Development_Phase/frontend'
 backend_dir = os.path.abspath(os.path.join(current_dir, "..", "backend"))
 if os.path.exists(backend_dir):
     sys.path.append(backend_dir)

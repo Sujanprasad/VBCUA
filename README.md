@@ -24,7 +24,7 @@ VBCUA/
 ├── 2. Requirement Analysis/               # SRS documentation (README.md)
 ├── 3. Project Design Phase/               # Architecture & Solution Fit reports (README.md)
 ├── 4. Project Planning Phase/             # Timeline and risk assessments (README.md)
-├── 5. Project Development Phase/          # Restructured Codebase (README.md)
+├── 5.Project_Development_Phase/          # Restructured Codebase (README.md)
 │   ├── backend/                           # Engine & Data Layer
 │   │   ├── modules/                       # Transcription, Similarity & Audio feature modules
 │   │   ├── database.py                    # SQLAlchemy models & seeds
@@ -70,7 +70,7 @@ source env/bin/activate
 ### 3. Install Dependencies
 Install all required libraries for the backend/frontend engine:
 ```bash
-pip install -r "5. Project Development Phase/backend/requirements.txt"
+pip install -r "5.Project_Development_Phase/backend/requirements.txt"
 ```
 
 ### 4. Setup Environment Variables
@@ -80,8 +80,8 @@ Copy `.env.example` to create your local `.env` configuration files:
 cp .env.example .env
 
 # Subfolder environment configs (to support various execution contexts)
-cp .env.example "5. Project Development Phase/frontend/.env"
-cp .env.example "5. Project Development Phase/backend/.env"
+cp .env.example "5.Project_Development_Phase/frontend/.env"
+cp .env.example "5.Project_Development_Phase/backend/.env"
 ```
 Inside `.env`, verify or customize the defaults:
 *   `DATABASE_URL`: Relational database connection string (SQLite fallback or remote PostgreSQL).
@@ -95,7 +95,7 @@ Inside `.env`, verify or customize the defaults:
 
 To launch the interactive Streamlit dashboard, run:
 ```bash
-streamlit run "5. Project Development Phase/frontend/app.py"
+streamlit run "5.Project_Development_Phase/frontend/app.py"
 ```
 This launches a local web server (typically at `http://localhost:8501`).
 

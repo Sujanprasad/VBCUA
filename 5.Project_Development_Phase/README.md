@@ -7,7 +7,7 @@ This folder contains the active source code of the Voice-Based Concept Understan
 ## 📁 Repository Code Structure
 
 ```text
-5. Project Development Phase/
+5.Project_Development_Phase/
 ├── backend/                             # Core Processing Engine & Data Layer
 │   ├── modules/                         # Core Python AI and Acoustic Modules
 │   │   ├── audio_features.py            # Acoustic volume and silence analysis (Librosa)
@@ -34,7 +34,7 @@ This folder contains the active source code of the Voice-Based Concept Understan
 ### 1. Run the Streamlit Dashboard
 Launch the dashboard app from the project root workspace:
 ```bash
-streamlit run "5. Project Development Phase/frontend/app.py"
+streamlit run "5.Project_Development_Phase/frontend/app.py"
 ```
 
 ---

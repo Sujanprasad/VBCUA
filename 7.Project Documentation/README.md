@@ -19,11 +19,11 @@ To launch the application locally:
    ```
 3. Install required libraries if not already done:
    ```bash
-   pip install -r "5. Project Development Phase/backend/requirements.txt"
+   pip install -r "5.Project_Development_Phase/backend/requirements.txt"
    ```
 4. Execute the Streamlit command:
    ```bash
-   streamlit run "5. Project Development Phase/frontend/app.py"
+   streamlit run "5.Project_Development_Phase/frontend/app.py"
    ```
 5. Access the local port in your browser: `http://localhost:8501`.
 
