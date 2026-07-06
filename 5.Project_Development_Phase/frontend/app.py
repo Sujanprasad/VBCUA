@@ -19,16 +19,16 @@ if os.path.exists(backend_dir):
     sys.path.append(backend_dir)
 
 # Import database and modules
-from backend.database import (
+from database import (
     get_db, init_db, User, AudioFile, ReferenceConcept, 
     Transcript, FillerWordStats, SemanticSimilarity, 
     AudioFeature, EvaluationResult, Report, Session
 )
-from backend.modules.transcription import transcribe_audio
-from backend.modules.semantic_analysis import compute_semantic_similarity, analyze_filler_words
-from backend.modules.audio_features import extract_audio_features
-from backend.modules.evaluation import evaluate_response
-from backend.modules.report_generator import generate_report_pdf
+from modules.transcription import transcribe_audio
+from modules.semantic_analysis import compute_semantic_similarity, analyze_filler_words
+from modules.audio_features import extract_audio_features
+from modules.evaluation import evaluate_response
+from modules.report_generator import generate_report_pdf
 
 # Set page config
 st.set_page_config(
