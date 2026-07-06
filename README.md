@@ -20,32 +20,26 @@ VBCUA is a production-grade, local, and secure AI-powered assessment application
 
 ```text
 VBCUA/
-├── 1. Project Conception/                 # Empathy Map & Conception Report
-├── 2. Requirement Analysis/               # SRS documentation
-├── 3. Project Design Phase/               # Architecture and Problem-Solution fit reports
-├── 4. Project Planning Phase/             # Timeline and risk assessments
-├── 5. Project Development Phase/           # Setup logs and development history
-├── 6. Project Testing/                    # Latency benchmarks and test cases
-├── 7. Project Documentation/              # Operator guides and user manuals
-├── 8. Project Demonstration/              # Demo Planning and Team Coordination reports
-├── assets/
-│   ├── style.css                          # Custom CSS cards and UI styling
-│   └── dashboard_screenshot.png           # Dashboard Preview Image
-├── modules/
-│   ├── audio_features.py                  # Acoustic volume and silence analysis (Librosa)
-│   ├── evaluation.py                      # Scoring logic and penalty computations
-│   ├── report_generator.py                # PDF flowable compiler (ReportLab)
-│   ├── semantic_analysis.py               # Embedding similarity & filler word counting (S-BERT)
-│   └── transcription.py                   # Speech transcoder (OpenAI Whisper)
-├── temp_uploads/                          # Temporary directory for uploaded recordings
-├── .env                                   # Local runtime environment configurations
+├── 1. Brainstorming & Ideation/           # Empathy Map & Conception Report (README.md)
+├── 2. Requirement Analysis/               # SRS documentation (README.md)
+├── 3. Project Design Phase/               # Architecture & Solution Fit reports (README.md)
+├── 4. Project Planning Phase/             # Timeline and risk assessments (README.md)
+├── 5. Project Development Phase/          # Restructured Codebase (README.md)
+│   ├── backend/                           # Engine & Data Layer
+│   │   ├── modules/                       # Transcription, Similarity & Audio feature modules
+│   │   ├── database.py                    # SQLAlchemy models & seeds
+│   │   ├── requirements.txt               # Backend Python dependencies
+│   │   ├── inspect_db.py                  # Database inspection utility
+│   │   └── test_sim.py                    # Offline pipeline scoring simulator
+│   └── frontend/                          # Presentation Dashboard Layer
+│       ├── app.py                         # Streamlit UI Presentation Dashboard
+│       └── assets/                        # UI Stylesheet & Dashboard previews
+├── 6.Project Testing/                     # Latency benchmarks and test plans (README.md)
+├── 7.Project Documentation/               # Operator guides and user manuals (README.md)
+├── 8.Project Demonstration/               # Showcase features, presentation guides (README.md)
 ├── .env.example                           # Configuration templates
 ├── .gitignore                             # Git exclusion boundaries
-├── app.py                                 # Streamlit Main presentation layer
-├── database.py                            # Relational SQLite tables and seeds (SQLAlchemy)
-├── generate_academic_docs.py              # Compiles project phase PDF portfolios
-├── requirements.txt                       # Application dependencies
-└── vbcua.db                               # Persistent local relational database
+└── generate_academic_docs.py              # Compiles project phase PDF portfolios
 ```
 
 ---
@@ -74,18 +68,23 @@ source env/bin/activate
 ```
 
 ### 3. Install Dependencies
-Install all required libraries:
+Install all required libraries for the backend/frontend engine:
 ```bash
-pip install -r requirements.txt
+pip install -r "5. Project Development Phase/backend/requirements.txt"
 ```
 
 ### 4. Setup Environment Variables
-Copy `.env.example` to create your local `.env` configuration file:
+Copy `.env.example` to create your local `.env` configuration files:
 ```bash
+# Root environment config
 cp .env.example .env
+
+# Subfolder environment configs (to support various execution contexts)
+cp .env.example "5. Project Development Phase/frontend/.env"
+cp .env.example "5. Project Development Phase/backend/.env"
 ```
 Inside `.env`, verify or customize the defaults:
-*   `DATABASE_URL`: Relational database connection string (defaulting to local `vbcua.db`).
+*   `DATABASE_URL`: Relational database connection string (SQLite fallback or remote PostgreSQL).
 *   `WHISPER_MODEL_SIZE`: Whisper model configuration (e.g., `tiny`, `base`, `small`).
 *   `SBERT_MODEL_NAME`: Sentence transformer model name (default: `all-MiniLM-L6-v2`).
 *   `DEFAULT_SILENCE_THRESHOLD_DB`: Decibel threshold below peak to detect silence pauses.
@@ -94,23 +93,18 @@ Inside `.env`, verify or customize the defaults:
 
 ## 💻 Running the Application
 
-To launch the interactive dashboard, run:
+To launch the interactive Streamlit dashboard, run:
 ```bash
-streamlit run app.py
+streamlit run "5. Project Development Phase/frontend/app.py"
 ```
 This launches a local web server (typically at `http://localhost:8501`).
 
 ### 🎙️ How to Test and Run a Successful Demo:
-The repository contains sample audio files in the `temp_uploads` folder (like `OSR_us_000_0010_8k.wav`) containing standard speech tests (Harvard Sentences). Follow these steps to perform a successful test run:
-
-1.  **Select Target Concept**: In the concept dropdown, select **`Speech and Pacing Demo`**. *(Note: This reference concept is pre-seeded with the exact transcript of the demo audio file).*
-2.  **Upload Audio Response**: Upload the demo WAV file from `temp_uploads/` (`OSR_us_000_0010_8k.wav`).
-3.  **Run Analysis**: Click **Analyze Concept Understanding**. The system will transcribe the speech and match the semantic meaning, resulting in a **100/100** score.
-4.  **Download PDF Report**: Click **Download Detailed PDF Report** to view the professionally styled PDF.
-5.  **Test Custom Speech**: To test regular academic concepts like **Photosynthesis** or **Newton's First Law**:
-    *   Select the target concept in the dropdown.
-    *   Record yourself explaining the concept in your own words (e.g., *"Plants use photosynthesis to make food using sunlight and carbon dioxide"*).
-    *   Upload your recording. The Sentence-BERT non-linear similarity engine maps natural paraphrases to realistic scores (90-95% rather than harsh linear penalties).
+1.  **Select Target Concept**: In the concept dropdown on the dashboard, select any pre-seeded target concept (e.g., **`Newton's First Law of Motion`** or **`Photosynthesis`**).
+2.  **Upload Audio Response**: Upload a WAV or MP3 audio recording of yourself explaining the selected concept in your own words.
+3.  **Run Analysis**: Click **Analyze Concept Understanding**. The system will transcribe the speech, match the semantic meaning, extract acoustic characteristics, and calculate your score.
+4.  **Download PDF Report**: Click the download button to export a professionally styled, flowable-based PDF evaluation report.
+5.  **View History**: Go to the **Assessment History** tab to view past evaluations or delete records from the SQLite/PostgreSQL database.
 
 ---
 

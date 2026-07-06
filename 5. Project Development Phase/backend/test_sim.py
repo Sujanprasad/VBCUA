@@ -1,5 +1,9 @@
 import sys
-sys.path.append('modules')
+import os
+# Ensure the backend directory is in path
+backend_dir = os.path.dirname(os.path.abspath(__file__))
+if backend_dir not in sys.path:
+    sys.path.append(backend_dir)
 from modules.semantic_analysis import compute_semantic_similarity
 
 ans = "Newton's first law states that an object will keep moving or stay still unless some net force is applied to it."

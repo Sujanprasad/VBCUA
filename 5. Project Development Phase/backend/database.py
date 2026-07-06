@@ -11,16 +11,19 @@ load_dotenv()
 
 def get_writeable_sqlite_url():
     try:
-        # Test if we can write to the local directory
-        test_file = "test_write.tmp"
+        # Determine the directory where database.py resides
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        db_path = os.path.join(base_dir, "vbcua.db")
+        db_path = db_path.replace("\\", "/")
+        # Test if we can write to this path
+        test_file = os.path.join(base_dir, "test_write.tmp")
         with open(test_file, "w") as f:
             f.write("test")
         os.remove(test_file)
-        return "sqlite:///vbcua.db"
+        return f"sqlite:///{db_path}"
     except Exception:
         import tempfile
         temp_db_path = os.path.join(tempfile.gettempdir(), "vbcua.db")
-        # Ensure forward slashes for SQLAlchemy SQLite url format on Windows/Linux
         temp_db_path = temp_db_path.replace("\\", "/")
         return f"sqlite:///{temp_db_path}"
 

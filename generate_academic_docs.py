@@ -185,7 +185,7 @@ def main():
     # ==================== 1. PROJECT CONCEPTION ====================
     # 1.1 Empathy Map
     create_professional_pdf(
-        "1. Project Conception/Empathy Map.pdf",
+        "1. Brainstorming & Ideation/Empathy Map.pdf",
         "Empathy Map - VBCUA User Analysis",
         "Deep Analysis of Student and Instructor Persona Behaviors & Needs",
         [
@@ -209,7 +209,7 @@ def main():
 
     # 1.2 Project Conception Report
     create_professional_pdf(
-        "1. Project Conception/Project Conception Report.pdf",
+        "1. Brainstorming & Ideation/Project Conception Report.pdf",
         "Project Conception & Design Thinking Report",
         "Detailed Conception, Persona Identification, and Problem Definition",
         [
@@ -377,7 +377,7 @@ def main():
 
     # ==================== 6. PROJECT TESTING ====================
     create_professional_pdf(
-        "6. Project Testing/Test Plan and Results.pdf",
+        "6.Project Testing/Test Plan and Results.pdf",
         "Project Test Plan & Validation Report",
         "Unit Tests, Verification Results, and Performance Latency Analysis",
         [
@@ -400,7 +400,7 @@ def main():
 
     # ==================== 7. PROJECT DOCUMENTATION ====================
     create_professional_pdf(
-        "7. Project Documentation/User Manual and API Docs.pdf",
+        "7.Project Documentation/User Manual and API Docs.pdf",
         "VBCUA User Manual & System Operator Guide",
         "Step-by-Step Guide to Executing, Configuring, and Operating VBCUA",
         [
@@ -425,7 +425,7 @@ def main():
     # ==================== 8. PROJECT DEMONSTRATION ====================
     # 8.1 Communication
     create_professional_pdf(
-        "8. Project Demonstration/Communication.pdf",
+        "8.Project Demonstration/Communication.pdf",
         "Presentation & Communication Guide",
         "Demo Delivery Strategy & Structure for Project Showcase",
         [
@@ -443,7 +443,7 @@ def main():
 
     # 8.2 Demonstration of Proposed Features
     create_professional_pdf(
-        "8. Project Demonstration/Demonstration of Proposed Features.pdf",
+        "8.Project Demonstration/Demonstration of Proposed Features.pdf",
         "Demonstration of Proposed Features",
         "Interactive Feature Validation Guide",
         [
@@ -459,7 +459,7 @@ def main():
 
     # 8.3 Project Demo Planning
     create_professional_pdf(
-        "8. Project Demonstration/Project Demo Planning.pdf",
+        "8.Project Demonstration/Project Demo Planning.pdf",
         "Project Demonstration Script & Plan",
         "Detailed Demo Step-by-Step Script",
         [
@@ -476,7 +476,7 @@ def main():
 
     # 8.4 Scalability
     create_professional_pdf(
-        "8. Project Demonstration/Scalability.pdf",
+        "8.Project Demonstration/Scalability.pdf",
         "System Scalability & Future Scope",
         "Long-term Architecture Enhancements",
         [
@@ -513,7 +513,7 @@ def main():
     ]
     
     create_professional_pdf(
-        "8. Project Demonstration/Team Involvement in Demonstration.pdf",
+        "8.Project Demonstration/Team Involvement in Demonstration.pdf",
         "Team Involvement in Demonstration",
         "Academic Document detailing Individual Project Execution",
         [

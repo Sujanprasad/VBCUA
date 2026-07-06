@@ -10,8 +10,13 @@ from dotenv import load_dotenv  # type: ignore
 load_dotenv()
 from sqlalchemy.orm import joinedload
 
-# Ensure modules directory is in path
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+# Ensure modules and database directories are in path, whether running from root or frontend folder
+current_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(current_dir)
+# Support running from within '5. Project Development Phase/frontend'
+backend_dir = os.path.abspath(os.path.join(current_dir, "..", "backend"))
+if os.path.exists(backend_dir):
+    sys.path.append(backend_dir)
 
 # Import database and modules
 from database import (
@@ -57,7 +62,8 @@ def load_css(file_path):
 
 # 1. Initialize Database on startup
 init_db()
-load_css(os.path.join("assets", "style.css"))
+current_dir = os.path.dirname(os.path.abspath(__file__))
+load_css(os.path.join(current_dir, "assets", "style.css"))
 
 # 2. Session Management
 # Initialize a database-backed session token in st.session_state
@@ -191,7 +197,8 @@ with tabs[0]:
             with st.spinner("Processing analysis pipeline... Please wait."):
                 try:
                     # Save uploaded file temporarily
-                    temp_dir = "temp_uploads"
+                    current_dir = os.path.dirname(os.path.abspath(__file__))
+                    temp_dir = os.path.join(current_dir, "temp_uploads")
                     os.makedirs(temp_dir, exist_ok=True)
                     temp_filepath = os.path.join(temp_dir, f"{uuid.uuid4().hex}_{uploaded_file.name}")
                     
@@ -307,7 +314,8 @@ with tabs[0]:
                             
                             # 7. Generate PDF Report
                             status_text.text("📄 Generating PDF summary...")
-                            reports_dir = "reports"
+                            current_dir = os.path.dirname(os.path.abspath(__file__))
+                            reports_dir = os.path.join(current_dir, "reports")
                             os.makedirs(reports_dir, exist_ok=True)
                             pdf_filepath = os.path.join(reports_dir, f"report_eval_{eval_result_db.id}.pdf")
                             
