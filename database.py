@@ -9,7 +9,25 @@ from dotenv import load_dotenv  # type: ignore
 # Load environment variables
 load_dotenv()
 
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///vbcua.db")
+def get_writeable_sqlite_url():
+    try:
+        # Test if we can write to the local directory
+        test_file = "test_write.tmp"
+        with open(test_file, "w") as f:
+            f.write("test")
+        os.remove(test_file)
+        return "sqlite:///vbcua.db"
+    except Exception:
+        import tempfile
+        temp_db_path = os.path.join(tempfile.gettempdir(), "vbcua.db")
+        # Ensure forward slashes for SQLAlchemy SQLite url format on Windows/Linux
+        temp_db_path = temp_db_path.replace("\\", "/")
+        return f"sqlite:///{temp_db_path}"
+
+DATABASE_URL = os.getenv("DATABASE_URL")
+if not DATABASE_URL or DATABASE_URL.strip() == "":
+    DATABASE_URL = get_writeable_sqlite_url()
+
 
 Base = declarative_base()
 
@@ -142,9 +160,11 @@ try:
         with engine.connect() as conn:
             pass
 except Exception as e:
-    print(f"DATABASE WARNING: Failed to connect to target '{DATABASE_URL}'. Falling back to local SQLite. Error: {e}")
-    DATABASE_URL = "sqlite:///vbcua.db"
+    fallback_url = get_writeable_sqlite_url()
+    print(f"DATABASE WARNING: Failed to connect to target '{DATABASE_URL}'. Falling back to local SQLite at '{fallback_url}'. Error: {e}")
+    DATABASE_URL = fallback_url
     engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
+
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
