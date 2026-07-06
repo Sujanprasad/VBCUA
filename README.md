@@ -113,7 +113,7 @@ Benchmark metrics recorded on sample inputs (tested on an Intel Core i7 processo
 *   **Whisper transcription (Warm Cache)**: ~1.26 seconds for a standard 2-second response.
 *   **Semantic similarity (Warm Cache)**: ~0.028 seconds.
 *   **Audio feature extraction**: ~0.004 seconds.
-*   **PDF report compilation**: ~0.021 seconds.
+*   **PDF report compilation**: ~0.021 seconds
 
 ---
 
