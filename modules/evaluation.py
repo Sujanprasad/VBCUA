@@ -1,9 +1,30 @@
+def map_similarity_to_score(similarity):
+    """
+    Maps the S-BERT cosine similarity score (0.0 to 1.0) to a standard 
+    academic grading scale (0 to 100).
+    """
+    if similarity < 0.15:
+        # Completely unrelated content
+        return max(0.0, similarity * 100.0)
+    elif similarity < 0.40:
+        # Partially related but weak content
+        # Map [0.15, 0.40] to [15.0, 60.0]
+        return 15.0 + (similarity - 0.15) * (45.0 / 0.25)
+    elif similarity < 0.70:
+        # Good paraphrased content
+        # Map [0.40, 0.70] to [60.0, 90.0]
+        return 60.0 + (similarity - 0.40) * (30.0 / 0.30)
+    else:
+        # Excellent match / near verbatim content
+        # Map [0.70, 1.00] to [90.0, 100.0]
+        return 90.0 + (similarity - 0.70) * (10.0 / 0.30)
+
 def evaluate_response(semantic_score, filler_ratio, filler_word_count, pause_ratio, rms_energy, word_count):
     """
     Combines similarity, filler words, and audio characteristics to produce a final grade.
     
     Grading Rules:
-        - Semantic Score Base: semantic_score * 100
+        - Semantic Score Base: mapped using map_similarity_to_score
         - Filler Penalty: Deducted if filler ratio > 2%. Max penalty 20 points.
         - Pause Penalty: Deducted if pause ratio > 25% (hesitation) or < 5% (rushed). Max penalty 20 points.
         - Volume Penalty: Deducted if average RMS energy is extremely low (< 0.015), indicating whispering/low confidence.
@@ -27,7 +48,8 @@ def evaluate_response(semantic_score, filler_ratio, filler_word_count, pause_rat
             - 'feedback_notes': Structured text feedback listing strengths and growth areas.
     """
     # 1. Base Semantic Score
-    base_score = semantic_score * 100.0
+    base_score = map_similarity_to_score(semantic_score)
+
     
     # 2. Filler Word Penalty
     filler_penalty = 0.0

@@ -182,9 +182,10 @@ def create_professional_pdf(filepath, doc_title, subtitle, content_blocks, table
 def main():
     print("Generating expanded, professional portfolio documentation...")
 
-    # ==================== 1. EMPATHY MAP ====================
+    # ==================== 1. PROJECT CONCEPTION ====================
+    # 1.1 Empathy Map
     create_professional_pdf(
-        "Empathy Map.pdf",
+        "1. Project Conception/Empathy Map.pdf",
         "Empathy Map - VBCUA User Analysis",
         "Deep Analysis of Student and Instructor Persona Behaviors & Needs",
         [
@@ -205,6 +206,29 @@ def main():
             ])
         ]
     )
+
+    # 1.2 Project Conception Report
+    create_professional_pdf(
+        "1. Project Conception/Project Conception Report.pdf",
+        "Project Conception & Design Thinking Report",
+        "Detailed Conception, Persona Identification, and Problem Definition",
+        [
+            ("1. Project Background & Initiation", [
+                "In modern education, assessing conceptual understanding via verbal communication is key. However, manual grading of spoken explanations is time-consuming and subjective. The Voice-Based Concept Understanding Analyser (VBCUA) was conceived to automate this process locally, privately, and securely."
+            ]),
+            ("2. User Personas & Empathy Map Details", [
+                "• **Student Persona**: Needs immediate feedback on oral explanations, worries about grading bias, and wants actionable metrics to improve speech fluency.",
+                "• **Instructor Persona**: Manages large classes, spends excessive hours listening to audio recordings, and seeks an objective helper to check semantic concept matching and speech pacing."
+            ]),
+            ("3. Brainstorming & Ideation Phase", [
+                "During the ideation phase, various architectural approaches were evaluated. The team decided on a local-first AI system combining OpenAI Whisper for transcription, Sentence-BERT for semantic similarity matching, and Librosa for extracting acoustic characteristics (volume and silence pauses). This avoids external API costs and secures user privacy."
+            ]),
+            ("4. Problem-Solution Fit", [
+                "The fit is achieved by mapping the candidate's spoken text directly to stored reference concepts in a local relational database, calculating a combined content-delivery score, and generating a professional, downloadable feedback report in PDF format."
+            ])
+        ]
+    )
+
 
     # ==================== 2. REQUIREMENT ANALYSIS ====================
     create_professional_pdf(
